@@ -44,37 +44,38 @@ def init(chrome_path):
 def entry(chrome_path, dest_page): 
     if not re.match(r'^https?:/{2}\w.+$', dest_page):
         raise RuntimeError('invalid URL: ' + dest_page)
-    chromeOptions = webdriver.ChromeOptions()
-    chromeOptions.add_argument("--incognito")
-    # chromeOptions.add_argument('--headless')
-    chromeOptions.add_argument('--no-sandbox')
 
-    driver = webdriver.Chrome(os.path.join(chrome_path, r'chromedriver.exe'), options=chromeOptions)  # 浏览器驱动
+    while True:
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("--incognito")
+        # chromeOptions.add_argument('--headless')
+        chromeOptions.add_argument('--no-sandbox')
 
-    driver.delete_all_cookies()  # 删除cookie
+        driver = webdriver.Chrome(os.path.join(chrome_path, r'chromedriver.exe'), options=chromeOptions)  # 浏览器驱动
 
-    driver.get(dest_page)
-    driver.refresh()
+        driver.delete_all_cookies()  # 删除cookie
 
-    time.sleep(15)
-    source = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/a')
-    # action chain object creation
-    action = ActionChains(driver)
-    # move to the element and click then perform the operation
-    action.move_to_element(source).click().perform()
+        driver.get(dest_page)
+        driver.refresh()
 
-    random_view(driver)
+        time.sleep(15)
+        source = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/a')
+        # action chain object creation
+        action = ActionChains(driver)
+        # move to the element and click then perform the operation
+        action.move_to_element(source).click().perform()
 
-    # to close the browser
-    time.sleep(30) 
-    driver.quit()
+        random_view(driver)
+
+        # to close the browser
+        time.sleep(30) 
+        driver.quit()
 
 
 
 
 
 if __name__ == "__main__":
-    # chrome_path = r'C:\Users\root\scoop\apps\googlechrome\81.0.4044.138'
     chrome_path = r'C:\Program Files\Google\Chrome\Application'
     init(chrome_path)
 
