@@ -3,7 +3,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import os, fnmatch, shutil
-import _thread
+import threading
 import traceback 
 import re
 
@@ -82,8 +82,9 @@ if __name__ == "__main__":
     chrome_path = r'C:\Program Files\Google\Chrome\Application'
     init(chrome_path)
 
-    for i in range(100):
-        _thread.start_new_thread(entry,(chrome_path, os.getenv('DEST_PAGE'), 5))
+    while True:
+        if (threading.active_count() < 30):
+            threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
         time.sleep(30)
 
     time.sleep(999999999999999999999999999999999999) # sleep forever
