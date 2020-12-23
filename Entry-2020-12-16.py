@@ -40,7 +40,9 @@ def init(chrome_path):
     shutil.copyfile(result[0], os.path.join(chrome_path, r'chromedriver.exe'))
 
 
-def entry(chrome_path, dest_page):
+def entry(chrome_path, dest_page): 
+    if not re.match(r'^https?:/{2}\w.+$', dest_page):
+        raise RuntimeError('invalid URL: ' + dest_page)
     chromeOptions = webdriver.ChromeOptions()
     chromeOptions.add_argument("--incognito")
     # chromeOptions.add_argument('--headless')
