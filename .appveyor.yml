@@ -3,6 +3,7 @@ image: Visual Studio 2019
 # build: off
 
 before_build:
+  - ps: C:\python39\python.exe -m pip install --upgrade pip
   - ps: C:\Python39\Scripts\pip.exe install selenium
   - ps: C:\python39\python.exe .\Entry-2020-12-16.py
 
