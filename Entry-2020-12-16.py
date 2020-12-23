@@ -5,6 +5,7 @@ import time
 import os, fnmatch, shutil
 import _thread
 import traceback 
+import re
 
 def random_view(driver):
     SCROLL_PAUSE_TIME = 0.5
