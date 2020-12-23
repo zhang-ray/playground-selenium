@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     for i in range(100):
         try:
-            _thread.start_new_thread(entry,(chrome_path))
+            _thread.start_new_thread(entry,(chrome_path, os.getenv('DEST_PAGE')))
             time.sleep(1)
         except:
             traceback.print_exc() 
