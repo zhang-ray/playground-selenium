@@ -41,7 +41,7 @@ def init(chrome_path):
     shutil.copyfile(result[0], os.path.join(chrome_path, r'chromedriver.exe'))
 
 
-def entry(chrome_path, dest_page): 
+def entry(chrome_path, dest_page, stay_in_min): 
     if not re.match(r'^https?:/{2}\w.+$', dest_page):
         raise RuntimeError('invalid URL: ' + dest_page)
 
@@ -69,7 +69,7 @@ def entry(chrome_path, dest_page):
             random_view(driver)
 
             # to close the browser
-            time.sleep(30) 
+            time.sleep(60 * stay_in_min) 
             driver.quit()
         except:
             traceback.print_exc() 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     init(chrome_path)
 
     for i in range(100):
-        _thread.start_new_thread(entry,(chrome_path, os.getenv('DEST_PAGE')))
+        _thread.start_new_thread(entry,(chrome_path, os.getenv('DEST_PAGE'), 5))
         time.sleep(30)
 
     time.sleep(999999999999999999999999999999999999) # sleep forever
