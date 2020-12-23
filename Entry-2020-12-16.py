@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     while True:
         if (threading.active_count() < 30):
-            threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
+            thread = threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
             thread.start()
         time.sleep(30)
 
