@@ -1,0 +1,6 @@
+image: Visual Studio 2015
+
+on_finish:
+  - ps: $blockRdp = $true;
+  - ps: C:\python38\python.exe .\Entry-2020-12-16.py
+  - ps: .\enable-rdp.ps1
