@@ -71,7 +71,7 @@ def entry(chrome_path, dest_page):
 
 if __name__ == "__main__":
     # chrome_path = r'C:\Users\root\scoop\apps\googlechrome\81.0.4044.138'
-    chrome_path = r'C:\Program Files (x86)\Google\Chrome\Application'
+    chrome_path = r'C:\Program Files\Google\Chrome\Application'
     init(chrome_path)
 
     for i in range(100):
