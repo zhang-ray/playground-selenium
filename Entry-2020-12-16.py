@@ -86,6 +86,6 @@ if __name__ == "__main__":
         if True:
             thread = threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
             thread.start()
-        time.sleep(10)
+        time.sleep(3)
 
     # time.sleep(999999999999999999999999999999999999) # sleep forever
