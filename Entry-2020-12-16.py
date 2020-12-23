@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import os, fnmatch, shutil
 import _thread
+import traceback 
 
 def random_view():
     SCROLL_PAUSE_TIME = 0.5
@@ -79,5 +80,5 @@ if __name__ == "__main__":
             _thread.start_new_thread(entry,(chrome_path))
             time.sleep(1)
         except:
-            pass
+            traceback.print_exc() 
 
