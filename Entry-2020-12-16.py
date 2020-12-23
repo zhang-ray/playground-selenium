@@ -47,7 +47,7 @@ def entry(chrome_path, dest_page):
     chromeOptions = webdriver.ChromeOptions()
     chromeOptions.add_argument("--incognito")
     # chromeOptions.add_argument('--headless')
-    # chromeOptions.add_argument('--no-sandbox')
+    chromeOptions.add_argument('--no-sandbox')
 
     driver = webdriver.Chrome(os.path.join(chrome_path, r'chromedriver.exe'), options=chromeOptions)  # 浏览器驱动
 
