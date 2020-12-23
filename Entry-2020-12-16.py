@@ -6,7 +6,7 @@ import os, fnmatch, shutil
 import _thread
 import traceback 
 
-def random_view():
+def random_view(driver):
     SCROLL_PAUSE_TIME = 0.5
 
     # Get scroll height
@@ -60,7 +60,7 @@ def entry(chrome_path, dest_page):
     # move to the element and click then perform the operation
     action.move_to_element(source).click().perform()
 
-    random_view()
+    random_view(driver)
 
     # to close the browser
     time.sleep(30) 
