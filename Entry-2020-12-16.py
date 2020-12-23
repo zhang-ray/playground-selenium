@@ -3,7 +3,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import os, fnmatch, shutil
-import thread
+import _thread
 
 def random_view():
     SCROLL_PAUSE_TIME = 0.5
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     for i in range(100):
         try:
-            thread.start_new_thread(entry,(chrome_path))
+            _thread.start_new_thread(entry,(chrome_path))
             time.sleep(1)
         except:
             pass
