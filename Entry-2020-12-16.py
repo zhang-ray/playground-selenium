@@ -56,7 +56,7 @@ def entry(chrome_path, dest_page):
     driver.get(dest_page)
     driver.refresh()
 
-    time.sleep(10)
+    time.sleep(15)
     source = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div[1]/a')
     # action chain object creation
     action = ActionChains(driver)
@@ -81,7 +81,7 @@ if __name__ == "__main__":
     for i in range(100):
         try:
             _thread.start_new_thread(entry,(chrome_path, os.getenv('DEST_PAGE')))
-            time.sleep(1)
+            time.sleep(30)
         except:
             traceback.print_exc() 
 
