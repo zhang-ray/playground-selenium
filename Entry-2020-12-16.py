@@ -81,10 +81,11 @@ if __name__ == "__main__":
     chrome_path = r'C:\Program Files\Google\Chrome\Application'
     init(chrome_path)
 
-    while True:
-        if (threading.active_count() < 50):
+    for id in range(10):
+        # if (threading.active_count() < 50):
+        if True:
             thread = threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
             thread.start()
         time.sleep(10)
 
-    time.sleep(999999999999999999999999999999999999) # sleep forever
+    # time.sleep(999999999999999999999999999999999999) # sleep forever
