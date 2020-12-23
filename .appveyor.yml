@@ -1,8 +1,10 @@
-image: Visual Studio 2015
+image: Visual Studio 2019
 
+# build: off
 
 before_build:
-  - ps: C:\python38\python.exe .\Entry-2020-12-16.py
+  - ps: C:\Python39\Script\pip.exe install selenium 
+  - ps: C:\python39\python.exe .\Entry-2020-12-16.py
 
 on_finish:
   - ps: $blockRdp = $true;
