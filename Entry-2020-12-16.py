@@ -76,8 +76,10 @@ def entry(chrome_path, dest_page, stay_in_min):
         driver.quit()
     except:
         traceback.print_exc() 
-
-
+        try:
+            driver.quit()
+        except:
+            traceback.print_exc()
 
 
 
@@ -90,11 +92,10 @@ if __name__ == "__main__":
     else:
         init(chrome_path)
 
-    for id in range(NB_THREAD):
-        # if (threading.active_count() < 50):
-        if True:
+    while True:
+        if (threading.active_count() < NB_THREAD):
             thread = threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
             thread.start()
         time.sleep(3)
 
-    # time.sleep(999999999999999999999999999999999999) # sleep forever
+    time.sleep(99999) # sleep forever
