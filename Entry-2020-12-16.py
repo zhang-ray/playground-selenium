@@ -83,12 +83,14 @@ def entry(chrome_path, dest_page, stay_in_min):
 
 if __name__ == "__main__":
     chrome_path = r'C:\Program Files\Google\Chrome\Application'
+    NB_THREAD = 20
     if platform.system() == 'Linux':
         chrome_path = r'/usr/bin'
+        NB_THREAD = 50
     else:
         init(chrome_path)
 
-    for id in range(20):
+    for id in range(NB_THREAD):
         # if (threading.active_count() < 50):
         if True:
             thread = threading.Thread(target=entry,args=(chrome_path, os.getenv('DEST_PAGE'), 5,))
