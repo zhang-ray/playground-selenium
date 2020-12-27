@@ -6,6 +6,7 @@ import os, fnmatch, shutil
 import threading
 import traceback 
 import re
+import platform
 
 def random_view(driver):
     SCROLL_PAUSE_TIME = 0.5
@@ -51,7 +52,10 @@ def entry(chrome_path, dest_page, stay_in_min):
         # chromeOptions.add_argument('--headless')
         chromeOptions.add_argument('--no-sandbox')
 
-        driver = webdriver.Chrome(os.path.join(chrome_path, r'chromedriver.exe'), options=chromeOptions)  # 浏览器驱动
+        chrome_drive_name = r'chromedriver.exe'
+        if platform.system() == 'Linux':
+            chrome_drive_name = r'chromedriver'
+        driver = webdriver.Chrome(os.path.join(chrome_path, chrome_drive_name), options=chromeOptions)  # 浏览器驱动
 
         driver.delete_all_cookies()  # 删除cookie
 
@@ -79,7 +83,10 @@ def entry(chrome_path, dest_page, stay_in_min):
 
 if __name__ == "__main__":
     chrome_path = r'C:\Program Files\Google\Chrome\Application'
-    init(chrome_path)
+    if platform.system() == 'Linux':
+        chrome_path = r'/usr/bin'
+    else:
+        init(chrome_path)
 
     for id in range(20):
         # if (threading.active_count() < 50):
